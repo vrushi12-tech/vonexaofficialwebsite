@@ -29,7 +29,7 @@ app.use(hostRouter);
 
 app.use(errorController.error404);
 
-const port = 2999; 
+const port = process.env.PORT || 2999; 
 mongoConnect((client) => {
 console.log(client);
 app.listen(port, () => {
