@@ -1,0 +1,127 @@
+<%- include('./partials/head') %>
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+  <%- include('./partials/navbar') %>
+
+
+  <!-- Background -->
+
+  <div class="relative flex-1 overflow-hidden min-h-[80vh] flex items-center">
+
+    <div class="absolute inset-0
+                bg-gradient-to-br
+                from-indigo-950
+                via-slate-950
+                to-purple-950">
+    </div>
+
+    <div class="absolute -top-32 -right-32
+                w-96 h-96
+                bg-indigo-600/20
+                rounded-full
+                blur-3xl">
+    </div>
+
+    <div class="absolute -bottom-32 -left-32
+                w-96 h-96
+                bg-purple-600/20
+                rounded-full
+                blur-3xl">
+    </div>
+
+
+    <main class="relative max-w-2xl mx-auto px-6 py-24 text-center">
+
+      <div class="w-20 h-20 mx-auto
+                  rounded-full
+                  bg-indigo-500/10
+                  border border-indigo-400/30
+                  flex items-center justify-center
+                  text-4xl">
+        ⭐
+      </div>
+
+      <h1 class="mt-8
+                 text-3xl md:text-5xl
+                 font-black
+                 leading-tight">
+
+        Thanks for the
+        <span class="text-transparent
+                     bg-clip-text
+                     bg-gradient-to-r
+                     from-indigo-400
+                     to-purple-400">
+          feedback!
+        </span>
+
+      </h1>
+
+      <p class="mt-5
+                text-lg
+                text-slate-400
+                max-w-md
+                mx-auto
+                leading-relaxed">
+
+        Your review has been posted and now appears on our
+        reviews page. We really appreciate you taking the time
+        to share your experience.
+
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-3 mt-10">
+
+        <a href="/reviews"
+           class="inline-flex items-center justify-center
+                  gap-2 px-8 py-3.5 rounded-xl
+                  bg-gradient-to-r
+                  from-indigo-600
+                  to-purple-600
+                  text-white font-bold
+                  shadow-lg
+                  shadow-indigo-900/30
+                  hover:from-indigo-500
+                  hover:to-purple-500
+                  hover:-translate-y-0.5
+                  transition">
+          See All Reviews
+        </a>
+
+        <a href="/"
+           class="inline-flex items-center justify-center
+                  gap-2 px-8 py-3.5 rounded-xl
+                  border border-white/10
+                  bg-white/5
+                  text-slate-300 font-bold
+                  hover:bg-white/10
+                  hover:text-white
+                  transition">
+          Back to Home
+        </a>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- Footer -->
+
+  <footer class="border-t border-white/10">
+
+    <div class="max-w-7xl mx-auto px-6 py-6 text-center">
+
+      <p class="text-sm text-slate-600">
+        © <%= new Date().getFullYear() %> Vonexa
+      </p>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<%- include('../partials/head') %>
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+  <%- include('../partials/host-nav') %>
+
+
+  <div class="relative overflow-hidden">
+
+    <div class="absolute inset-0
+                bg-gradient-to-br
+                from-indigo-950
+                via-slate-950
+                to-purple-950">
+    </div>
+
+    <div class="absolute -top-32 -right-32
+                w-96 h-96
+                bg-indigo-600/20
+                rounded-full
+                blur-3xl">
+    </div>
+
+
+    <main class="relative max-w-2xl mx-auto px-6 py-16">
+
+      <a href="/services"
+         class="inline-flex items-center gap-2 text-sm text-slate-400
+                hover:text-white transition mb-6">
+        ← Back to Services
+      </a>
+
+      <span class="inline-block px-4 py-2 rounded-full
+                   bg-indigo-500/10 border border-indigo-400/20
+                   text-indigo-300 text-sm font-semibold">
+        ✦ <%= service ? 'EDIT SERVICE' : 'NEW SERVICE' %>
+      </span>
+
+      <h1 class="mt-5 text-3xl md:text-4xl font-black">
+        <%= service ? 'Edit Service' : 'Add a Service' %>
+      </h1>
+
+      <p class="mt-3 text-slate-400">
+        <%= service
+            ? 'Update the details of this package or service.'
+            : 'Add a new package or service to your offerings.' %>
+      </p>
+
+
+      <div class="mt-8 bg-slate-900/90 backdrop-blur-xl
+                  border border-white/10
+                  rounded-3xl p-7 md:p-9
+                  shadow-2xl">
+
+        <form action="<%= service ? '/services/edit/' + service.id : '/services/add' %>"
+              method="POST" class="space-y-5">
+
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Service Name</label>
+            <input type="text" name="name" placeholder="e.g. Vonexa Essential" required
+                   value="<%= service ? service.name : '' %>"
+                   class="w-full px-4 py-3 rounded-xl bg-slate-950
+                          border border-white/10 text-white placeholder-slate-600
+                          focus:outline-none focus:border-indigo-500
+                          focus:ring-2 focus:ring-indigo-500/20 transition">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Category</label>
+              <select name="category" required
+                      class="w-full px-4 py-3 rounded-xl bg-slate-950
+                             border border-white/10 text-white
+                             focus:outline-none focus:border-indigo-500
+                             focus:ring-2 focus:ring-indigo-500/20 transition">
+                <option value="One-Time" <%= service && service.category === 'One-Time' ? 'selected' : '' %>>One-Time Package</option>
+                <option value="Monthly" <%= service && service.category === 'Monthly' ? 'selected' : '' %>>Monthly Plan</option>
+                <option value="Custom" <%= service && service.category === 'Custom' ? 'selected' : '' %>>Custom Service</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Icon (emoji)</label>
+              <input type="text" name="icon" placeholder="🚀" maxlength="4"
+                     value="<%= service ? service.icon : '' %>"
+                     class="w-full px-4 py-3 rounded-xl bg-slate-950
+                            border border-white/10 text-white placeholder-slate-600
+                            focus:outline-none focus:border-indigo-500
+                            focus:ring-2 focus:ring-indigo-500/20 transition">
+            </div>
+
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Tagline</label>
+            <input type="text" name="tagline" placeholder="e.g. Perfect start for your business"
+                   value="<%= service ? service.tagline : '' %>"
+                   class="w-full px-4 py-3 rounded-xl bg-slate-950
+                          border border-white/10 text-white placeholder-slate-600
+                          focus:outline-none focus:border-indigo-500
+                          focus:ring-2 focus:ring-indigo-500/20 transition">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Price (₹)</label>
+              <input type="number" name="price" min="0" step="1" required
+                     value="<%= service ? service.price : '' %>"
+                     class="w-full px-4 py-3 rounded-xl bg-slate-950
+                            border border-white/10 text-white placeholder-slate-600
+                            focus:outline-none focus:border-indigo-500
+                            focus:ring-2 focus:ring-indigo-500/20 transition">
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Unit</label>
+              <select name="unit"
+                      class="w-full px-4 py-3 rounded-xl bg-slate-950
+                             border border-white/10 text-white
+                             focus:outline-none focus:border-indigo-500
+                             focus:ring-2 focus:ring-indigo-500/20 transition">
+                <option value="ONE-TIME" <%= service && service.unit === 'ONE-TIME' ? 'selected' : '' %>>ONE-TIME</option>
+                <option value="/MONTH" <%= service && service.unit === '/MONTH' ? 'selected' : '' %>>/MONTH</option>
+                <option value="FROM" <%= service && service.unit === 'FROM' ? 'selected' : '' %>>FROM (starting price)</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">Badge (optional)</label>
+            <input type="text" name="badge" placeholder="e.g. MOST POPULAR or BEST VALUE"
+                   value="<%= service && service.badge ? service.badge : '' %>"
+                   class="w-full px-4 py-3 rounded-xl bg-slate-950
+                          border border-white/10 text-white placeholder-slate-600
+                          focus:outline-none focus:border-indigo-500
+                          focus:ring-2 focus:ring-indigo-500/20 transition">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-2">
+              Features (one per line)
+            </label>
+            <textarea name="features" rows="6"
+                      placeholder="1 Business Landing Page&#10;NFC Digital Business Card&#10;Digital QR Menu"
+                      class="w-full px-4 py-3 rounded-xl bg-slate-950
+                             border border-white/10 text-white placeholder-slate-600
+                             resize-none focus:outline-none focus:border-indigo-500
+                             focus:ring-2 focus:ring-indigo-500/20 transition"
+            ><%= service ? service.features.join('\n') : '' %></textarea>
+          </div>
+
+          <button type="submit"
+                  class="w-full py-3.5 rounded-xl
+                         bg-gradient-to-r from-indigo-600 to-purple-600
+                         text-white font-bold shadow-lg shadow-indigo-900/30
+                         hover:from-indigo-500 hover:to-purple-500
+                         hover:-translate-y-0.5 transition">
+            <%= service ? 'Save Changes →' : 'Add Service →' %>
+          </button>
+
+        </form>
+
+      </div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

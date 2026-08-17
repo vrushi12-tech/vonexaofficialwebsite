@@ -1,0 +1,373 @@
+<%- include('../partials/head') %>
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+  <%- include('../partials/navbar') %>
+
+
+  <div class="relative overflow-hidden">
+
+    <div class="absolute inset-0
+                bg-gradient-to-br
+                from-indigo-950
+                via-slate-950
+                to-purple-950">
+    </div>
+
+    <div class="absolute -top-32 -right-32
+                w-96 h-96
+                bg-indigo-600/20
+                rounded-full
+                blur-3xl">
+    </div>
+
+    <div class="absolute -bottom-32 -left-32
+                w-96 h-96
+                bg-purple-600/20
+                rounded-full
+                blur-3xl">
+    </div>
+
+
+    <main class="relative max-w-6xl mx-auto px-6 py-16">
+
+
+      <!-- Hero -->
+
+      <section class="text-center max-w-2xl mx-auto">
+
+        <span class="inline-flex items-center
+                     rounded-full
+                     bg-indigo-500/10
+                     border border-indigo-400/20
+                     px-4 py-2
+                     text-sm font-semibold
+                     text-indigo-300">
+          ✦ CLIENT REVIEWS
+        </span>
+
+        <h1 class="mt-6 text-4xl sm:text-5xl font-black tracking-tight">
+          What our clients
+          <span class="text-transparent bg-clip-text
+                       bg-gradient-to-r from-indigo-400 to-purple-400">
+            say about us.
+          </span>
+        </h1>
+
+        <p class="mt-5 text-slate-400 text-lg leading-relaxed">
+          Real feedback from businesses we've worked with.
+        </p>
+
+        <% if (reviews.length > 0) { %>
+          <div class="mt-6 inline-flex items-center gap-2
+                      bg-white/5 border border-white/10
+                      rounded-full px-5 py-2.5">
+            <span class="text-amber-400 text-lg">★</span>
+            <span class="font-bold"><%= avgRating.toFixed(1) %></span>
+            <span class="text-slate-500 text-sm">
+              average from <%= reviews.length %> review<%= reviews.length === 1 ? '' : 's' %>
+            </span>
+          </div>
+        <% } %>
+
+      </section>
+
+
+      <div class="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+
+
+        <!-- Submit form -->
+
+        <div class="lg:col-span-2
+                    bg-slate-900/90
+                    backdrop-blur-xl
+                    border border-white/10
+                    rounded-3xl
+                    p-7 md:p-8
+                    shadow-2xl
+                    lg:sticky lg:top-24">
+
+          <h2 class="text-xl font-bold">Leave a Review</h2>
+          <p class="text-slate-500 mt-2 text-sm">
+            Worked with Vonexa? We'd love your feedback.
+          </p>
+
+          <form action="/reviews" method="POST" class="space-y-5 mt-6">
+
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Your Name</label>
+              <input type="text" name="name" placeholder="Enter your name" required
+                     class="w-full px-4 py-3 rounded-xl bg-slate-950
+                            border border-white/10 text-white placeholder-slate-600
+                            focus:outline-none focus:border-indigo-500
+                            focus:ring-2 focus:ring-indigo-500/20 transition">
+            </div>
+
+         <div>
+
+                <label class="block text-sm
+                              font-medium
+                              text-slate-300
+                              mb-2">
+                  Package / Service
+                </label>
+
+                <select
+                  id="package"
+                  name="package"
+                  required
+                  class="w-full
+                         px-4 py-3
+                         rounded-xl
+                         bg-slate-950
+                         border border-white/10
+                         text-white
+                         focus:outline-none
+                         focus:border-indigo-500
+                         focus:ring-2
+                         focus:ring-indigo-500/20
+                         transition"
+                >
+                  <option value="" disabled selected>Select a package or service</option>
+                  <optgroup label="One-Time Packages">
+                    <option value="Vonexa Essential">Vonexa Essential — ₹3,499</option>
+                    <option value="Vonexa Professional">Vonexa Professional — ₹4,999</option>
+                    <option value="Vonexa Business Plus">Vonexa Business Plus — ₹8,999</option>
+                  </optgroup>
+                  <optgroup label="Monthly Marketing & Growth">
+                    <option value="Vonexa Social">Vonexa Social — ₹3,999/mo</option>
+                    <option value="Vonexa Social Plus">Vonexa Social Plus — ₹6,999/mo</option>
+                    <option value="Vonexa Digital Growth">Vonexa Digital Growth — ₹14,999/mo</option>
+                  </optgroup>
+                  <optgroup label="Custom Services">
+                    <option value="Landing Page">Landing Page</option>
+                    <option value="Business Website">Business Website</option>
+                    <option value="NFC Business Card">NFC Business Card</option>
+                    <option value="QR Menu + Stand">QR Menu + Stand</option>
+                    <option value="Google Profile Optimization">Google Profile Optimization</option>
+                    <option value="Basic Local SEO">Basic Local SEO</option>
+                    <option value="Social Media Setup">Social Media Setup</option>
+                    <option value="Logo Design">Logo Design</option>
+                    <option value="Custom Web Features">Custom Web Features</option>
+                  </optgroup>
+                  <optgroup label="Video Shoot & Content">
+                    <option value="Business / Reel Video Shooting">Business / Reel Video Shooting</option>
+                    <option value="Product Video Shooting">Product Video Shooting</option>
+                    <option value="Restaurant / Food Video">Restaurant / Food Video</option>
+                    <option value="Promotional Video">Promotional Video</option>
+                    <option value="Reel Editing">Reel Editing</option>
+                    <option value="5 Reels Package">5 Reels Package</option>
+                    <option value="10 Reels Package">10 Reels Package</option>
+                  </optgroup>
+                  <option value="Other">Other / Not sure yet</option>
+                </select>
+
+              </div>
+
+
+            <div>
+
+              <label class="block text-sm font-medium text-slate-300 mb-2">Your Rating</label>
+
+              <div class="flex items-center gap-1 flex-row-reverse justify-end" id="star-rating">
+
+                <input type="radio" name="rating" value="5" id="star5" class="peer/s5 sr-only">
+                <label for="star5"
+                       class="cursor-pointer text-3xl text-slate-700
+                              peer-hover/s5:text-amber-400
+                              has-[~input:checked]:text-amber-400
+                              [.rated_&]:text-amber-400
+                              hover:text-amber-400 transition">★</label>
+
+                <input type="radio" name="rating" value="4" id="star4" class="peer/s4 sr-only">
+                <label for="star4"
+                       class="cursor-pointer text-3xl text-slate-700
+                              hover:text-amber-400 transition">★</label>
+
+                <input type="radio" name="rating" value="3" id="star3" class="peer/s3 sr-only">
+                <label for="star3"
+                       class="cursor-pointer text-3xl text-slate-700
+                              hover:text-amber-400 transition">★</label>
+
+                <input type="radio" name="rating" value="2" id="star2" class="peer/s2 sr-only">
+                <label for="star2"
+                       class="cursor-pointer text-3xl text-slate-700
+                              hover:text-amber-400 transition">★</label>
+
+                <input type="radio" name="rating" value="1" id="star1" class="peer/s1 sr-only" checked>
+                <label for="star1"
+                       class="cursor-pointer text-3xl text-slate-700
+                              hover:text-amber-400 transition">★</label>
+
+              </div>
+
+              <p class="text-xs text-slate-600 mt-1.5">Click a star to rate, right to left.</p>
+
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-slate-300 mb-2">Your Feedback</label>
+              <textarea name="message" rows="4" placeholder="Tell us about your experience..." required
+                        class="w-full px-4 py-3 rounded-xl bg-slate-950
+                               border border-white/10 text-white placeholder-slate-600
+                               resize-none focus:outline-none focus:border-indigo-500
+                               focus:ring-2 focus:ring-indigo-500/20 transition"></textarea>
+            </div>
+
+            <button type="submit"
+                    class="w-full py-3.5 rounded-xl
+                           bg-gradient-to-r from-indigo-600 to-purple-600
+                           text-white font-bold shadow-lg shadow-indigo-900/30
+                           hover:from-indigo-500 hover:to-purple-500
+                           hover:-translate-y-0.5 transition">
+              Submit Review →
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <!-- Reviews list -->
+
+        <div class="lg:col-span-3 space-y-5">
+
+          <% if (reviews.length === 0) { %>
+
+            <div class="bg-slate-900/80 border border-white/10
+                        rounded-3xl p-16 text-center">
+
+              <div class="mx-auto w-16 h-16 rounded-2xl
+                          bg-indigo-500/10
+                          flex items-center justify-center
+                          text-3xl mb-5">
+                💬
+              </div>
+
+              <h3 class="text-lg font-bold">No reviews yet</h3>
+              <p class="mt-2 text-sm text-slate-500 max-w-sm mx-auto">
+                Be the first to share your experience with Vonexa.
+              </p>
+
+            </div>
+
+          <% } else { %>
+
+            <% reviews.forEach(function(review) {
+                 const initials = (review.name || '?')
+                   .split(' ')
+                   .filter(Boolean)
+                   .slice(0, 2)
+                   .map(function(w) { return w[0].toUpperCase(); })
+                   .join('');
+            %>
+
+              <div class="bg-slate-900/80 border border-white/10
+                          rounded-3xl p-6
+                          hover:border-indigo-500/30 transition-all duration-300">
+
+                <div class="flex items-start justify-between gap-3">
+
+                  <div class="flex items-center gap-3">
+
+                    <div class="w-10 h-10 rounded-full
+                                bg-gradient-to-br from-indigo-500 to-purple-600
+                                flex items-center justify-center
+                                text-sm font-bold text-white shrink-0">
+                      <%= initials %>
+                    </div>
+
+                    <div>
+                      <p class="font-bold text-slate-100"><%= review.name %></p>
+                      <% if (review.package) { %>
+                        <p class="text-xs text-slate-500"><%= review.package %></p>
+                      <% } %>
+                    </div>
+
+                  </div>
+
+                  <div class="text-amber-400 text-sm whitespace-nowrap">
+                    <% for (let i = 0; i < 5; i++) { %>
+                      <%= i < review.rating ? '★' : '☆' %>
+                    <% } %>
+                  </div>
+
+                </div>
+
+                <p class="mt-4 text-slate-400 leading-relaxed">
+                  <%= review.message %>
+                </p>
+
+                <p class="mt-4 text-xs text-slate-600">
+                  <%= review.createdAt ? new Date(review.createdAt).toLocaleDateString() : '' %>
+                </p>
+
+              </div>
+
+            <% }); %>
+
+          <% } %>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- Footer -->
+
+  <footer class="border-t border-white/10">
+
+    <div class="max-w-7xl mx-auto px-6 py-8
+                flex flex-col md:flex-row
+                justify-between items-center gap-3">
+
+      <p class="text-slate-500 text-sm">
+        © <%= new Date().getFullYear() %> Vonexa Digital Solutions
+      </p>
+
+      <p class="text-slate-600 text-sm">
+        Websites. Marketing. Growth.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+    (function () {
+      const container = document.getElementById('star-rating');
+      if (!container) return;
+      const labels = Array.from(container.querySelectorAll('label'));
+      const inputs = Array.from(container.querySelectorAll('input'));
+
+      function paint(uptoValue) {
+        inputs.forEach(function (input, idx) {
+          const label = labels[idx];
+          if (Number(input.value) <= uptoValue) {
+            label.classList.add('text-amber-400');
+            label.classList.remove('text-slate-700');
+          } else {
+            label.classList.remove('text-amber-400');
+            label.classList.add('text-slate-700');
+          }
+        });
+      }
+
+      inputs.forEach(function (input) {
+        input.addEventListener('change', function () {
+          paint(Number(input.value));
+        });
+      });
+
+      paint(1); // default selection
+    })();
+  </script>
+
+</body>
+</html>

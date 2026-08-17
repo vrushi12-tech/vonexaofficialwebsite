@@ -1,0 +1,637 @@
+<%- include('../partials/head') %>
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+  <%- include('../partials/navbar') %>
+
+
+  <div class="relative overflow-hidden">
+
+    <div class="absolute inset-0 bg-gradient-to-br from-indigo-950 via-slate-950 to-purple-950"></div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-32 -left-24 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
+
+
+    <main class="relative max-w-7xl mx-auto px-6 py-16">
+
+
+      <!-- HEADER -->
+
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-14">
+
+        <div>
+
+          <span class="inline-block px-4 py-2 rounded-full
+                       bg-white/10 border border-white/10
+                       text-indigo-300 text-sm font-semibold">
+            ✦ VONEXA DIGITAL SOLUTIONS
+          </span>
+
+          <h1 class="mt-5 text-3xl md:text-5xl font-black leading-tight max-w-2xl">
+            Digital Solutions for
+            <span class="text-transparent bg-clip-text
+                         bg-gradient-to-r from-indigo-400 to-purple-400">
+              Every Business
+            </span>
+          </h1>
+
+          <p class="mt-4 text-lg text-slate-400 max-w-xl">
+            Websites, Digital Tools, Marketing & Growth — all under one roof.
+          </p>
+
+        </div>
+
+        <div class="inline-flex items-center gap-3
+                    bg-slate-900/80 border border-white/10
+                    rounded-2xl px-5 py-4 w-fit">
+          <span class="w-10 h-10 rounded-xl bg-indigo-500/10
+                       flex items-center justify-center text-xl">
+            🛡️
+          </span>
+          <div>
+            <p class="text-sm font-semibold text-slate-200">Trusted by</p>
+            <p class="text-sm font-semibold text-slate-200">Local Businesses</p>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-10">
+
+
+        <!-- MAIN COLUMN -->
+
+        <div class="xl:col-span-2 space-y-14">
+
+
+          <!-- ONE-TIME PACKAGES -->
+
+          <section>
+
+            <h2 class="text-center text-sm font-bold uppercase tracking-[0.25em] text-slate-400 mb-8">
+              One-Time Packages
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+              <%
+                const oneTimePackages = [
+                  {
+                    icon: '🚀',
+                    name: 'Essential',
+                    tagline: 'Perfect start for your business',
+                    price: '3,499',
+                    unit: 'ONE-TIME',
+                    accent: 'blue',
+                    features: [
+                      '1 Business Landing Page',
+                      'NFC Digital Business Card',
+                      'Digital QR Menu',
+                      'Acrylic QR Stand',
+                      'Google Review QR',
+                      'Google Business Profile Setup',
+                      'Google Maps Setup Assistance',
+                      '30 Days Basic Support'
+                    ],
+                    button: 'GET STARTED',
+                    badge: null
+                  },
+                  {
+                    icon: '💼',
+                    name: 'Professional',
+                    tagline: 'Build credibility. Get discovered.',
+                    price: '4,999',
+                    unit: 'ONE-TIME',
+                    accent: 'purple',
+                    features: [
+                      'Everything in Essential',
+                      'Premium UI/UX Landing Page',
+                      'Smooth Animations',
+                      'Google Profile Optimization',
+                      'Basic SEO Setup',
+                      'Social Media Profile Setup',
+                      'WhatsApp Integration',
+                      '90 Days Maintenance'
+                    ],
+                    button: 'CHOOSE PROFESSIONAL',
+                    badge: 'MOST POPULAR'
+                  },
+                  {
+                    icon: '👑',
+                    name: 'Business Plus',
+                    tagline: 'Complete digital solution to grow',
+                    price: '8,999',
+                    unit: 'ONE-TIME',
+                    accent: 'amber',
+                    features: [
+                      'Everything in Professional',
+                      'Premium Business Website',
+                      'Up to 5 Pages / Sections',
+                      'Advanced UI/UX',
+                      'Basic SEO Optimization',
+                      'Google Search Console Setup',
+                      'Social Media Starter Setup',
+                      '6 Months Maintenance'
+                    ],
+                    button: 'GO BUSINESS PLUS',
+                    badge: null
+                  }
+                ];
+
+                const accentMap = {
+                  blue: {
+                    ring: 'border-blue-500/20 hover:border-blue-400/40',
+                    iconBg: 'bg-blue-500/10',
+                    priceText: 'text-white',
+                    btn: 'border border-blue-500/40 text-blue-300 hover:bg-blue-500/10',
+                    check: 'text-blue-400'
+                  },
+                  purple: {
+                    ring: 'border-purple-500/40 hover:border-purple-400/60',
+                    iconBg: 'bg-purple-500/10',
+                    priceText: 'text-white',
+                    btn: 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white',
+                    check: 'text-purple-400'
+                  },
+                  amber: {
+                    ring: 'border-amber-500/30 hover:border-amber-400/50',
+                    iconBg: 'bg-amber-500/10',
+                    priceText: 'text-white',
+                    btn: 'border border-amber-500/40 text-amber-300 hover:bg-amber-500/10',
+                    check: 'text-amber-400'
+                  }
+                };
+              %>
+
+              <% oneTimePackages.forEach(function(pkg) { const a = accentMap[pkg.accent]; %>
+
+                <div class="relative bg-slate-900/80 backdrop-blur-xl
+                            border <%= a.ring %>
+                            rounded-3xl p-6 flex flex-col
+                            transition-all duration-300
+                            <%= pkg.badge ? 'md:-translate-y-2 shadow-xl shadow-purple-900/20' : '' %>">
+
+                  <% if (pkg.badge) { %>
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2
+                                 px-4 py-1 rounded-full
+                                 bg-gradient-to-r from-indigo-600 to-purple-600
+                                 text-xs font-bold whitespace-nowrap">
+                      <%= pkg.badge %>
+                    </span>
+                  <% } %>
+
+                  <div class="w-12 h-12 rounded-2xl <%= a.iconBg %>
+                              flex items-center justify-center text-2xl mb-4">
+                    <%= pkg.icon %>
+                  </div>
+
+                  <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Vonexa</p>
+                  <h3 class="text-xl font-black mt-0.5"><%= pkg.name %></h3>
+                  <p class="text-sm text-slate-500 mt-1"><%= pkg.tagline %></p>
+
+                  <div class="mt-5 flex items-baseline gap-2">
+                    <span class="text-3xl font-black <%= a.priceText %>">₹<%= pkg.price %></span>
+                    <span class="text-xs text-slate-500 font-semibold"><%= pkg.unit %></span>
+                  </div>
+
+                  <ul class="mt-5 space-y-2.5 flex-1">
+                    <% pkg.features.forEach(function(f) { %>
+                      <li class="flex items-start gap-2 text-sm text-slate-300">
+                        <span class="<%= a.check %> mt-0.5">✓</span>
+                        <span><%= f %></span>
+                      </li>
+                    <% }); %>
+                  </ul>
+
+                  <a href="/enquiry?package=<%= encodeURIComponent('Vonexa ' + pkg.name) %>"
+                     class="mt-7 block text-center py-3 rounded-xl font-bold text-sm
+                            transition <%= a.btn %>">
+                    <%= pkg.button %>
+                  </a>
+
+                </div>
+
+              <% }); %>
+
+            </div>
+
+          </section>
+
+
+          <!-- MONTHLY PLANS -->
+
+          <section>
+
+            <h2 class="text-center text-sm font-bold uppercase tracking-[0.25em] text-slate-400 mb-8">
+              Monthly Marketing &amp; Growth Plans
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+              <%
+                const monthlyPlans = [
+                  {
+                    icon: '📣',
+                    name: 'Social',
+                    tagline: 'Stay active. Stay visible.',
+                    price: '3,999',
+                    accent: 'teal',
+                    features: [
+                      '1 Professional Video',
+                      'Video Editing',
+                      'Instagram Management',
+                      'Facebook Management',
+                      'Captions & Hashtags',
+                      'Content Planning'
+                    ],
+                    button: 'GET STARTED',
+                    badge: null
+                  },
+                  {
+                    icon: '📊',
+                    name: 'Social Plus',
+                    tagline: 'More content. More engagement.',
+                    price: '6,999',
+                    accent: 'green',
+                    features: [
+                      '2 Professional Videos',
+                      'Video Editing',
+                      'Instagram Management',
+                      'Facebook Management',
+                      'Captions & Hashtags',
+                      'Monthly Content Calendar',
+                      'Basic Analytics'
+                    ],
+                    button: 'CHOOSE SOCIAL PLUS',
+                    badge: null
+                  },
+                  {
+                    icon: '📈',
+                    name: 'Digital Growth',
+                    tagline: 'Premium content. Real growth.',
+                    price: '14,999',
+                    accent: 'gold',
+                    features: [
+                      '4 Professional Videos',
+                      'Professional Video Editing',
+                      'Instagram Management',
+                      'Facebook Management',
+                      'Captions & Hashtags',
+                      'Monthly Content Strategy',
+                      'Google Business Posts',
+                      'Monthly Analytics',
+                      '1 Strategy Session / Month'
+                    ],
+                    button: 'GROW WITH VONEXA',
+                    badge: 'BEST VALUE'
+                  }
+                ];
+
+                const accentMap2 = {
+                  teal: {
+                    ring: 'border-teal-500/20 hover:border-teal-400/40',
+                    iconBg: 'bg-teal-500/10',
+                    btn: 'border border-teal-500/40 text-teal-300 hover:bg-teal-500/10',
+                    check: 'text-teal-400'
+                  },
+                  green: {
+                    ring: 'border-emerald-500/20 hover:border-emerald-400/40',
+                    iconBg: 'bg-emerald-500/10',
+                    btn: 'border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/10',
+                    check: 'text-emerald-400'
+                  },
+                  gold: {
+                    ring: 'border-amber-500/30 hover:border-amber-400/50',
+                    iconBg: 'bg-amber-500/10',
+                    btn: 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-slate-950',
+                    check: 'text-amber-400'
+                  }
+                };
+              %>
+
+              <% monthlyPlans.forEach(function(pkg) { const a = accentMap2[pkg.accent]; %>
+
+                <div class="relative bg-slate-900/80 backdrop-blur-xl
+                            border <%= a.ring %>
+                            rounded-3xl p-6 flex flex-col
+                            transition-all duration-300
+                            <%= pkg.badge ? 'md:-translate-y-2 shadow-xl shadow-amber-900/20' : '' %>">
+
+                  <% if (pkg.badge) { %>
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2
+                                 px-4 py-1 rounded-full
+                                 bg-gradient-to-r from-amber-500 to-orange-500
+                                 text-slate-950 text-xs font-bold whitespace-nowrap">
+                      <%= pkg.badge %>
+                    </span>
+                  <% } %>
+
+                  <div class="w-12 h-12 rounded-2xl <%= a.iconBg %>
+                              flex items-center justify-center text-2xl mb-4">
+                    <%= pkg.icon %>
+                  </div>
+
+                  <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Vonexa</p>
+                  <h3 class="text-xl font-black mt-0.5"><%= pkg.name %></h3>
+                  <p class="text-sm text-slate-500 mt-1"><%= pkg.tagline %></p>
+
+                  <div class="mt-5 flex items-baseline gap-2">
+                    <span class="text-3xl font-black text-white">₹<%= pkg.price %></span>
+                    <span class="text-xs text-slate-500 font-semibold">/MONTH</span>
+                  </div>
+
+                  <ul class="mt-5 space-y-2.5 flex-1">
+                    <% pkg.features.forEach(function(f) { %>
+                      <li class="flex items-start gap-2 text-sm text-slate-300">
+                        <span class="<%= a.check %> mt-0.5">✓</span>
+                        <span><%= f %></span>
+                      </li>
+                    <% }); %>
+                  </ul>
+
+                  <a href="/enquiry?package=<%= encodeURIComponent('Vonexa ' + pkg.name) %>"
+                     class="mt-7 block text-center py-3 rounded-xl font-bold text-sm
+                            transition <%= a.btn %>">
+                    <%= pkg.button %>
+                  </a>
+
+                </div>
+
+              <% }); %>
+
+            </div>
+
+          </section>
+
+        </div>
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="space-y-8">
+
+
+          <!-- CUSTOM SERVICES -->
+
+          <div class="bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6">
+
+            <h3 class="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mb-5">
+              Custom Services
+            </h3>
+
+            <ul class="divide-y divide-white/5">
+
+              <%
+                const customServices = [
+                
+  ['🖥️', 'Landing Page', '2,999'],
+  ['🌐', 'Business Website', '4,999'],
+  ['📇', 'NFC Business Card', '399'],
+  ['🔲', 'QR Menu + Stand', '1,499'],
+  ['G', 'Google Profile Optimization', '1,499'],
+  ['🔍', 'Basic Local SEO', '1,999'],
+  ['👥', 'Social Media Setup', '1,499'],
+  ['✏️', 'Logo Design', '999'],
+  ['</>', 'Custom Web Features', '1,499'],
+  ['🎬', 'Business / Reel Video Shooting', '2,499'],
+  ['📦', 'Product Video Shooting', '2,499'],
+  ['🍽️', 'Restaurant / Food Video', '2,799'],
+  ['📢', 'Promotional Video', '3,499'],
+  ['✂️', 'Reel Editing', '499 / REEL'],
+  ['🎥', '5 Reels Package', '10,999'],
+  ['🎥', '10 Reels Package', '20,999']
+
+                ];
+              %>
+
+              <% customServices.forEach(function(s) { %>
+                <li class="flex items-center justify-between py-3">
+                  <div class="flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-white/5
+                                 flex items-center justify-center text-xs font-bold text-indigo-300">
+                      <%= s[0] %>
+                    </span>
+                    <span class="text-sm text-slate-300"><%= s[1] %></span>
+                  </div>
+                  <span class="text-xs text-slate-500 font-semibold whitespace-nowrap">
+                    FROM ₹<%= s[2] %>
+                  </span>
+                </li>
+              <% }); %>
+
+            </ul>
+
+          </div>
+
+
+          <!-- VIDEO SHOOT & CONTENT -->
+
+          <div class="bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6">
+
+            <h3 class="text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mb-5">
+              Video Shoot &amp; Content Services
+            </h3>
+
+            <ul class="divide-y divide-white/5">
+
+              <%
+                const videoServices = [
+  ['Business / Reel Video Shooting', '₹2,499'],
+  ['Product Video Shooting', '₹2,499'],
+  ['Restaurant / Food Video', '₹2,799'],
+  ['Promotional Video', '₹3,499'],
+  ['Reel Editing', '₹499 / REEL'],
+  ['5 Reels Package', '₹10,999'],
+  ['10 Reels Package', '₹20,999']
+];
+              
+              %>
+
+              <% videoServices.forEach(function(s) { %>
+                <li class="flex items-center justify-between py-3 gap-3">
+                  <span class="text-sm text-slate-300"><%= s[0] %></span>
+                  <span class="text-xs text-slate-500 font-semibold whitespace-nowrap">
+                    FROM ₹<%= s[1] %>
+                  </span>
+                </li>
+              <% }); %>
+
+            </ul>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+
+      <!-- MORE SERVICES (added via admin panel) -->
+
+      <% if (typeof plans !== 'undefined' && plans.length > 0) { %>
+
+        <section class="mt-16">
+
+          <h2 class="text-center text-sm font-bold uppercase tracking-[0.25em] text-slate-400 mb-8">
+            More Services
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <% plans.forEach(function(plan) { %>
+
+              <div class="relative bg-slate-900/80 backdrop-blur-xl
+                          border border-white/10 hover:border-indigo-500/30
+                          rounded-3xl p-6 flex flex-col
+                          transition-all duration-300">
+
+                <% if (plan.badge) { %>
+                  <span class="absolute -top-3 left-1/2 -translate-x-1/2
+                               px-4 py-1 rounded-full
+                               bg-gradient-to-r from-indigo-600 to-purple-600
+                               text-xs font-bold whitespace-nowrap">
+                    <%= plan.badge %>
+                  </span>
+                <% } %>
+
+                <div class="w-12 h-12 rounded-2xl bg-indigo-500/10
+                            flex items-center justify-center text-2xl mb-4">
+                  <%= plan.icon %>
+                </div>
+
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-500">Vonexa</p>
+                <h3 class="text-xl font-black mt-0.5"><%= plan.name %></h3>
+                <% if (plan.tagline) { %>
+                  <p class="text-sm text-slate-500 mt-1"><%= plan.tagline %></p>
+                <% } %>
+
+                <div class="mt-5 flex items-baseline gap-2">
+                  <span class="text-3xl font-black text-white">₹<%= plan.price.toLocaleString('en-IN') %></span>
+                  <span class="text-xs text-slate-500 font-semibold"><%= plan.unit %></span>
+                </div>
+
+                <% if (plan.features && plan.features.length > 0) { %>
+                  <ul class="mt-5 space-y-2.5 flex-1">
+                    <% plan.features.forEach(function(f) { %>
+                      <li class="flex items-start gap-2 text-sm text-slate-300">
+                        <span class="text-indigo-400 mt-0.5">✓</span>
+                        <span><%= f %></span>
+                      </li>
+                    <% }); %>
+                  </ul>
+                <% } %>
+
+                <a href="/enquiry?package=<%= encodeURIComponent(plan.name) %>"
+                   class="mt-7 block text-center py-3 rounded-xl font-bold text-sm
+                          border border-indigo-500/40 text-indigo-300
+                          hover:bg-indigo-500/10 transition">
+                  ENQUIRE NOW
+                </a>
+
+              </div>
+
+            <% }); %>
+
+          </div>
+
+        </section>
+
+      <% } %>
+
+
+      <!-- TRUST STRIP -->
+
+      <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+        <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-5 py-4">
+          <span class="text-xl">🛡️</span>
+          <div>
+            <p class="text-sm font-semibold text-slate-200">Professional Quality</p>
+            <p class="text-xs text-slate-500">Top-notch designs & content</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-5 py-4">
+          <span class="text-xl">⏱️</span>
+          <div>
+            <p class="text-sm font-semibold text-slate-200">On-Time Delivery</p>
+            <p class="text-xs text-slate-500">We respect your time</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-5 py-4">
+          <span class="text-xl">🎧</span>
+          <div>
+            <p class="text-sm font-semibold text-slate-200">Dedicated Support</p>
+            <p class="text-xs text-slate-500">We're always here to help</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-5 py-4">
+          <span class="text-xl">🔒</span>
+          <div>
+            <p class="text-sm font-semibold text-slate-200">Secure & Reliable</p>
+            <p class="text-xs text-slate-500">Safe. Fast. Reliable.</p>
+          </div>
+        </div>
+
+      </div>
+
+      
+
+
+      <!-- WHATSAPP CTA -->
+
+      <a href="https://wa.me/919511953158"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="mt-6 flex items-center justify-between gap-4
+                bg-gradient-to-r from-indigo-600 to-purple-600
+                rounded-3xl px-8 py-6
+                shadow-xl shadow-indigo-900/30
+                hover:from-indigo-500 hover:to-purple-500
+                transition">
+
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-white/15
+                      flex items-center justify-center text-2xl">
+            💬
+          </div>
+          <div>
+            <p class="font-bold text-lg">Let's Grow Your Business</p>
+            <p class="text-indigo-100 text-sm">Chat with us on WhatsApp</p>
+          </div>
+        </div>
+
+        <span class="text-xl">→</span>
+
+      </a>
+
+    </main>
+
+  </div>
+
+
+  <!-- Footer -->
+
+  <footer class="border-t border-white/10">
+
+    <div class="max-w-7xl mx-auto px-6 py-8
+                flex flex-col md:flex-row
+                justify-between items-center gap-3">
+
+      <p class="text-slate-500 text-sm">
+        © <%= new Date().getFullYear() %> Vonexa Digital Solutions
+      </p>
+
+      <p class="text-slate-600 text-sm">
+        Websites. Marketing. Growth.
+      </p>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
