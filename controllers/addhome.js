@@ -1,4 +1,4 @@
-const Enquiry = require("./models/Enquiry");
+const Enquiry = require("../models/Enquiry");
 const ExcelJS = require('exceljs');
 const sendEnquiryEmail = require('../utils/email');
 exports.getHome = (req, res, next) => {
