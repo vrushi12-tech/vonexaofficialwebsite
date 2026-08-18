@@ -1,7 +1,10 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
+  requireTLS: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
@@ -10,8 +13,9 @@ const transporter = nodemailer.createTransport({
 
 const sendEnquiryEmail = async (enquiry) => {
   await transporter.sendMail({
-    from: process.env.EMAIL_USER,
+    from: `"Vonexa" <${process.env.EMAIL_USER}>`,
     to: process.env.EMAIL_USER,
+    replyTo: enquiry.email,
     subject: `New Client Enquiry - ${enquiry.name}`,
     html: `
       <h2>New Client Enquiry</h2>
