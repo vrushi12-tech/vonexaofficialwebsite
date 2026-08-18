@@ -1,20 +1,11 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  requireTLS: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEnquiryEmail = async (enquiry) => {
-  await transporter.sendMail({
-    from: `"Vonexa" <${process.env.EMAIL_USER}>`,
-    to: process.env.EMAIL_USER,
+  const { data, error } = await resend.emails.send({
+    from: "Vonexa <onboarding@resend.dev>",
+    to: [process.env.EMAIL_USER],
     replyTo: enquiry.email,
     subject: `New Client Enquiry - ${enquiry.name}`,
     html: `
@@ -27,6 +18,13 @@ const sendEnquiryEmail = async (enquiry) => {
       <p><strong>Message:</strong> ${enquiry.message}</p>
     `
   });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  console.log("Resend email ID:", data.id);
+  return data;
 };
 
 module.exports = sendEnquiryEmail;
