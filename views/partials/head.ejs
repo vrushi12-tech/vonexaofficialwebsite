@@ -5,60 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO Title -->
-  <title><%= pageTitle %></title>
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/img/favicon.png">
 
-  <!-- SEO Description -->
-  <meta
-    name="description"
-    content="<%= metaDescription || 'Vonexa provides professional website development, digital marketing, branding, QR menu systems and digital solutions for modern businesses.' %>"
-  >
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="<%= pageTitle %>">
+<meta property="og:description" content="<%= metaDescription || 'Vonexa provides professional digital solutions for modern businesses.' %>">
+<meta property="og:url" content="<%= canonicalUrl || 'https://vonexa.in/' %>">
+<meta property="og:image" content="https://vonexa.in/img/favicon.png">
+<meta property="og:image:alt" content="Vonexa">
 
-  <!-- Search Engine -->
-  <meta name="robots" content="index, follow">
-
-  <!-- Canonical -->
-  <link
-    rel="canonical"
-    href="<%= canonicalUrl || 'https://vonexa.in/' %>"
-  >
-
-  <!-- Favicon -->
-  <link
-    rel="icon"
-    type="image/png"
-    href="/favicon.png"
-  >
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="<%= pageTitle %>">
-  <meta
-    property="og:description"
-    content="<%= metaDescription || 'Vonexa provides professional digital solutions for modern businesses.' %>"
-  >
-  <meta
-    property="og:url"
-    content="<%= canonicalUrl || 'https://vonexa.in/' %>"
-  >
-  <meta
-    property="og:image"
-    content="https://vonexa.in/favicon.png"
-  >
-  <meta property="og:image:alt" content="Vonexa">
-
-  <!-- Twitter / X -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="<%= pageTitle %>">
-  <meta
-    name="twitter:description"
-    content="<%= metaDescription || 'Vonexa provides professional digital solutions for modern businesses.' %>"
-  >
-  <meta
-    name="twitter:image"
-    content="https://vonexa.in/favicon.png"
-  >
-
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<%= pageTitle %>">
+<meta name="twitter:description" content="<%= metaDescription || 'Vonexa provides professional digital solutions for modern businesses.' %>">
+<meta name="twitter:image" content="https://vonexa.in/img/favicon.png">
   <!-- CSS -->
   <link rel="stylesheet" href="/output.css">
 
