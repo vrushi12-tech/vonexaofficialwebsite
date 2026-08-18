@@ -12,6 +12,13 @@ const authRouter = require('./routes/authRoutes');
 const mongoConnect = require('./utils/databaseUtils');
 
 const app = express();
+app.use((req, res, next) => {
+  res.locals.pageTitle = "Vonexa | Digital Solutions";
+  res.locals.metaDescription =
+    "Vonexa provides professional website development, digital marketing, branding, QR menu systems and digital solutions for modern businesses.";
+  res.locals.canonicalUrl = `https://vonexa.in${req.path}`;
+  next();
+});
 app.set('view engine','ejs',);
 app.set('views','views')
 app.use(express.static('public'));
