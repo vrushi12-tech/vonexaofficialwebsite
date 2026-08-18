@@ -4,8 +4,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEnquiryEmail = async (enquiry) => {
   const { data, error } = await resend.emails.send({
-    from: "Vonexa <onboarding@resend.dev>",
-    to: [process.env.EMAIL_USER],
+    from: "Vonexa <team@vonexa.in>",
+    to: ["team@vonexa.in"],
     replyTo: enquiry.email,
     subject: `New Client Enquiry - ${enquiry.name}`,
     html: `
