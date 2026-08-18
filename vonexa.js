@@ -27,6 +27,10 @@ app.use(authRouter);
 app.use(userRouter);
 app.use(hostRouter);
 
+
+app.get('/demo', (req, res) => {
+  res.redirect(301, '/');
+});
 app.use(errorController.error404);
 
 const port = process.env.PORT || 2999; 
