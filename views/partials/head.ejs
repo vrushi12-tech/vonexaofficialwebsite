@@ -1,10 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%=pageTitle%></title>
-  <!-- <link rel="stylesheet" href="home.css"> -->
+
+  <!-- SEO Title -->
+  <title><%= pageTitle %></title>
+
+  <!-- SEO Description -->
+  <meta
+    name="description"
+    content="<%= metaDescription || 'Vonexa provides professional website development, digital marketing, branding, QR menu systems and digital solutions for modern businesses.' %>"
+  >
+
+  <!-- Search Engine -->
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical -->
+  <link
+    rel="canonical"
+    href="<%= canonicalUrl || 'https://vonexa.in/' %>"
+  >
+
+  <!-- Favicon -->
+  <link
+    rel="icon"
+    type="image/png"
+    href="https://res.cloudinary.com/dgbscbi0q/image/upload/v1786702056/Untitled_design_20260814_135748_0000_lfsc1t.png"
+  >
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="<%= pageTitle %>">
+  <meta
+    property="og:description"
+    content="<%= metaDescription || 'Vonexa provides professional digital solutions for modern businesses.' %>"
+  >
+  <meta
+    property="og:url"
+    content="<%= canonicalUrl || 'https://vonexa.in/' %>"
+  >
+  <meta
+    property="og:image"
+    content="https://res.cloudinary.com/dgbscbi0q/image/upload/v1786702056/Untitled_design_20260814_135748_0000_lfsc1t.png"
+  >
+  <meta property="og:image:alt" content="Vonexa">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= pageTitle %>">
+  <meta
+    name="twitter:description"
+    content="<%= metaDescription || 'Vonexa provides professional digital solutions for modern businesses.' %>"
+  >
+  <meta
+    name="twitter:image"
+    content="https://res.cloudinary.com/dgbscbi0q/image/upload/v1786702056/Untitled_design_20260814_135748_0000_lfsc1t.png"
+  >
+
+  <!-- CSS -->
   <link rel="stylesheet" href="/output.css">
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
