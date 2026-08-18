@@ -83,7 +83,7 @@ exports.getAddHome = (req, res, next) => {
 exports.postAddHome = (req, res, next) => {
   const { name, phone, email, package, message } = req.body;
 
-  console.log("Enquiry form data received:", req.body);
+  console.log("Enquiry form data received:");
 
   const enquiry = new (require("../models/enquiry"))(
     name,
@@ -96,7 +96,7 @@ exports.postAddHome = (req, res, next) => {
   enquiry
     .save()
     .then((result) => {
-      console.log("Enquiry saved successfully:", result.insertedId);
+      console.log("Enquiry saved successfully:");
 
       // Send email in background
       sendEnquiryEmail({
