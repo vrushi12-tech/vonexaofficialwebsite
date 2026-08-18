@@ -12,7 +12,9 @@ exports.getHome = (req, res, next) => {
       reviews: reviews,
       avgRating: avgRating,
       reviewCount: allReviews.length,
-      pageTitle: "Vonexa | Digital Solutions for Every Business"
+       pageTitle: 'Vonexa | Website Development & Digital Solutions',
+  metaDescription: 'Vonexa provides professional website development, digital marketing, branding, QR menu systems and digital solutions for modern businesses.',
+  canonicalUrl: 'https://vonexa.in/'
     });
   });
 };
