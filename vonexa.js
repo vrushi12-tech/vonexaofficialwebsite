@@ -30,8 +30,9 @@ app.use(hostRouter);
 app.use(errorController.error404);
 
 const port = process.env.PORT || 2999; 
-mongoConnect((client) => {
-console.log(client);
+mongoConnect((client) => 
+  {
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 } )
