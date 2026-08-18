@@ -363,6 +363,7 @@
 
               <button
                 type="submit"
+                id="enquirySubmitBtn"
                 class="w-full
                        py-3.5
                        rounded-xl
@@ -376,11 +377,23 @@
                        hover:from-indigo-500
                        hover:to-purple-500
                        hover:-translate-y-0.5
-                       transition"
+                       transition
+                       disabled:opacity-70
+                       disabled:cursor-not-allowed
+                       disabled:hover:translate-y-0
+                       flex items-center justify-center gap-2"
               >
-                Send Enquiry →
+                <svg id="enquirySpinner" class="hidden animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                </svg>
+                <span id="enquirySubmitText">Send Enquiry →</span>
               </button>
 
+
+              <p id="enquiryWaitNote" class="hidden text-center text-xs text-indigo-400">
+                First submission can take up to a minute while our server wakes up. Please don't close this page.
+              </p>
 
               <p class="text-center text-xs text-slate-600">
                 Your information will only be used to respond to your enquiry.
@@ -393,6 +406,28 @@
         </section>
 
       </div>
+
+
+      <script>
+        (function () {
+          const form = document.getElementById('enquiryForm');
+          const btn = document.getElementById('enquirySubmitBtn');
+          const spinner = document.getElementById('enquirySpinner');
+          const text = document.getElementById('enquirySubmitText');
+          const waitNote = document.getElementById('enquiryWaitNote');
+
+          if (form) {
+            form.addEventListener('submit', function () {
+              btn.disabled = true;
+              spinner.classList.remove('hidden');
+              text.textContent = 'Sending...';
+              waitNote.classList.remove('hidden');
+              // Not calling preventDefault() -- the form still submits normally,
+              // this just gives the user visual feedback while it's in flight.
+            });
+          }
+        })();
+      </script>
 
     </main>
 
