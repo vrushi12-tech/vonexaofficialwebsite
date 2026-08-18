@@ -76,9 +76,7 @@ exports.getAddHome = (req, res, next) => {
 
 exports.postAddHome = (req, res, next) => {
   const { name, phone, email, package, message } = req.body;
-
   console.log("Enquiry form data received:", req.body);
-
   const enquiry = new (require("../models/enquiry"))(
     name,
     phone,
@@ -86,26 +84,23 @@ exports.postAddHome = (req, res, next) => {
     package,
     message
   );
-
   enquiry
     .save()
-    .then(async (result) => {
+    .then((result) => {
       console.log("Enquiry saved successfully:", result.insertedId);
 
-      try {
-        await sendEnquiryEmail({
-          name,
-          phone,
-          email,
-          service: package,
-          message
-        });
-
-        console.log("Enquiry email sent successfully");
-
-      } catch (emailError) {
-        console.error("EMAIL ERROR:", emailError);
-      }
+      // Fire-and-forget: don't make the customer wait for the email to
+      // actually send. We respond as soon as the DB save is done, and
+      // let the email happen in the background.
+      sendEnquiryEmail({
+        name,
+        phone,
+        email,
+        service: package,
+        message
+      })
+        .then(() => console.log("Enquiry email sent successfully"))
+        .catch((emailError) => console.error("EMAIL ERROR:", emailError));
 
       res.render("enquiry-success", {
         pageTitle: "Enquiry Sent Successfully"
@@ -113,13 +108,11 @@ exports.postAddHome = (req, res, next) => {
     })
     .catch((err) => {
       console.log("ERROR saving enquiry:", err);
-
       res.render("enquiry-success", {
         pageTitle: "Enquiry Sent Successfully"
       });
     });
 };
-
 exports.getAllEnquiries = (req, res, next) => {
   (require("../models/enquiry")).fetchAll((allEnquiries) => {
     const activeStatus = req.query.status || 'All';
