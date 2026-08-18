@@ -113,6 +113,16 @@ exports.postAddHome = (req, res, next) => {
           console.error("EMAIL ERROR:", emailError);
         });
 
+      sendClientConfirmationEmail({
+    name,
+    phone,
+    email,
+    service: package,
+    message
+  })
+    .then(() => console.log("Client confirmation email sent successfully"))
+    .catch((err) => console.error("CLIENT EMAIL ERROR:", err));
+
       // Don't wait for email
       res.render("enquiry-success", {
         pageTitle: "Enquiry Sent Successfully"
