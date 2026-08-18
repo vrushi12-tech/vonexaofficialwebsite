@@ -28,3 +28,69 @@ const sendEnquiryEmail = async (enquiry) => {
 };
 
 module.exports = sendEnquiryEmail;
+
+
+const sendClientConfirmationEmail = async (enquiry) => {
+  const { data, error } = await resend.emails.send({
+    from: "Vonexa <team@vonexa.in>",
+    to: [enquiry.email],
+
+    subject: "We received your enquiry — Vonexa",
+
+    html: `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+
+        <h2>Thank you for contacting Vonexa!</h2>
+
+        <p>Hi ${enquiry.name},</p>
+
+        <p>
+          Thank you for reaching out to <strong>Vonexa</strong>.
+          We have successfully received your enquiry.
+        </p>
+
+        <p>
+          Our team will review your requirements and get back to you soon.
+        </p>
+
+        <hr>
+
+        <h3>Your Enquiry</h3>
+
+        <p>
+          <strong>Service:</strong> ${enquiry.service}
+        </p>
+
+        <p>
+          <strong>Phone:</strong> ${enquiry.phone}
+        </p>
+
+        <p>
+          <strong>Message:</strong><br>
+          ${enquiry.message}
+        </p>
+
+        <hr>
+
+        <p>
+          Regards,<br>
+          <strong>Team Vonexa</strong><br>
+          team@vonexa.in
+        </p>
+
+      </div>
+    `
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+};
+
+
+module.exports = {
+  sendEnquiryEmail,
+  sendClientConfirmationEmail
+}
