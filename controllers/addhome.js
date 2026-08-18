@@ -1,6 +1,10 @@
 const Enquiry = require("../models/Enquiry");
 const ExcelJS = require('exceljs');
-const sendEnquiryEmail = require('../utils/email');
+const {
+  sendEnquiryEmail,
+  sendClientConfirmationEmail
+} = require("../services/email");
+
 exports.getHome = (req, res, next) => {
   (require("../models/review")).fetchAll((allReviews) => {
     const reviews = allReviews.slice(0, 3);
