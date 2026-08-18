@@ -3,7 +3,7 @@ const ExcelJS = require('exceljs');
 const {
   sendEnquiryEmail,
   sendClientConfirmationEmail
-} = require("../services/email");
+} = require("../utils/email");
 
 exports.getHome = (req, res, next) => {
   (require("../models/review")).fetchAll((allReviews) => {
