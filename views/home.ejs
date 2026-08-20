@@ -68,17 +68,32 @@
         </a>
 
 <a href="/demos"
-   class="inline-flex items-center gap-2
+   class="group relative inline-flex items-center gap-3
           px-7 py-3.5 rounded-xl
-          bg-gradient-to-r from-indigo-600 to-purple-600
+          bg-slate-900
+          border border-indigo-500/40
           text-white font-bold
-          shadow-lg shadow-indigo-900/30
-          hover:from-indigo-500 hover:to-purple-500
-          hover:-translate-y-0.5
-          transition">
-  View Demos →
-</a>
+          overflow-hidden
+          shadow-lg shadow-indigo-500/20
+          hover:border-purple-400
+          hover:shadow-purple-500/30
+          hover:-translate-y-1
+          transition-all duration-300">
 
+  <span class="absolute inset-0
+               bg-gradient-to-r from-indigo-600/20 to-purple-600/20
+               opacity-0 group-hover:opacity-100
+               transition-opacity duration-300"></span>
+
+  <span class="relative">View Demos</span>
+
+  <span class="relative text-xl
+               group-hover:translate-x-1
+               transition-transform duration-300">
+    ↗
+  </span>
+
+</a>
         <a href="/enquiry"
            class="inline-flex items-center gap-2
                   px-7 py-3.5 rounded-xl
