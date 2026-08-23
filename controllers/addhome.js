@@ -222,9 +222,10 @@ exports.getAddClient = (req, res, next) => {
 };
 
 exports.postAddClient = (req, res, next) => {
-  const { name, phone, email, package: packageName, amount, completedOn, notes } = req.body;
+  const { VNX-ID,name, phone, email, package: packageName, amount, completedOn, notes } = req.body;
 
-  const client = new (require("../models/client"))(
+  const client = new (require("../models/client"))( 
+    VNX-ID,
     name,
     phone,
     email,
