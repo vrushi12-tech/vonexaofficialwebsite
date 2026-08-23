@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /login
 
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://vonexa.in/sitemap.xml
