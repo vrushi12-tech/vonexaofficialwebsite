@@ -8,21 +8,16 @@
   </url>
 
   <url>
-    <loc>https://vonexa.in/homes</loc>
+    <loc>https://vonexa.in/homes/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://vonexa.in/bookings</loc>
+    <loc>https://vonexa.in/bookings/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <url>
-    <loc>https://vonexa.in/homes</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
 </urlset>
