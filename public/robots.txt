@@ -1,4 +1,6 @@
-User-agent:*
-Allow:/homes
+User-agent: *
+Allow: /
 
-Sitemap: https://vonexa.in/sitemap.xml
+Disallow: /login
+
+Sitemap: https://yourdomain.com/sitemap.xml
